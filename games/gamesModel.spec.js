@@ -66,5 +66,19 @@ describe("gamesModel.js", () => {
 
       expect(response.status).toEqual(422);
     });
+    it("should add game, provided the correct info", async () => {
+      await Games.insert({ title: "Test-game", genre: "Test-genre" });
+
+      const games = await db("games");
+      expect(games).toHaveLength(1);
+    });
+    it("should add the correct game ", async () => {
+      let game = await Games.insert({
+        title: "Test-game",
+        genre: "Test-genre"
+      });
+      expect(game.title).toBe("Test-game");
+      expect(game.genre).toBe("Test-genre");
+    });
   });
 });
