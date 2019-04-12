@@ -11,9 +11,14 @@ server.get("/", async (req, res) => {
 });
 
 server.get("/games", async (req, res) => {
-  const games = await Games.all();
-
-  res.status(200).json(games);
+  try {
+    const games = await Games.all();
+    if (games) {
+      res.status(200).json(games);
+    } else {
+      res.status(404).json({ error: "The game could not be retrieved" });
+    }
+  } catch (error) {}
 });
 
 server.post("/games", (req, res) => {

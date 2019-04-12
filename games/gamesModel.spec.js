@@ -20,14 +20,10 @@ describe("gamesModel.js", () => {
         });
     });
     it("should return an array", async () => {
-      return request(server)
-        .get("/games")
-        .then(res => {
-          expect(res.text).toEqual([]);
-        });
-      //   const response = await request(server).get("/games");
-
-      //   expect(response.text).toBe([]);
+      const response = await request(server).get("/games");
+      if (response.body.length === 0) {
+        expect(response.body).toEqual([]);
+      }
     });
   });
   describe("POST Route", () => {
