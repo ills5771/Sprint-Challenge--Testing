@@ -20,4 +20,13 @@ describe("gamesModel.js", () => {
         });
     });
   });
+  describe("POST Route", () => {
+    it("should return status code 200 for POST", () => {
+      return request(server)
+        .post("/games")
+        .then(res => {
+          expect(res.status).toBe(200);
+        });
+    });
+  });
 });
