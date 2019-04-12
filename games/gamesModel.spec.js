@@ -12,5 +12,12 @@ describe("gamesModel.js", () => {
           expect(res.status).toBe(200);
         });
     });
+    it("should return status code 200(/games)", () => {
+      return request(server)
+        .get("/games")
+        .then(res => {
+          expect(res.status).toBe(200);
+        });
+    });
   });
 });
