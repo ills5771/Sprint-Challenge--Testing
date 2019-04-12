@@ -29,5 +29,13 @@ describe("gamesModel.js", () => {
 
       expect(response.status).toEqual(201);
     });
+    it("should return status code 422 for POST", async () => {
+      const expectedBody = { title: "test1" };
+      const response = await request(server)
+        .post("/games")
+        .send(expectedBody);
+
+      expect(response.status).toEqual(422);
+    });
   });
 });
