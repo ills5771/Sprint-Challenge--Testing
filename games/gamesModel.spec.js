@@ -21,12 +21,13 @@ describe("gamesModel.js", () => {
     });
   });
   describe("POST Route", () => {
-    it("should return status code 200 for POST", () => {
-      return request(server)
+    it("should return status code 201 for POST", async () => {
+      const expectedBody = { title: "test1", genre: "test-genre1" };
+      const response = await request(server)
         .post("/games")
-        .then(res => {
-          expect(res.status).toBe(200);
-        });
+        .send(expectedBody);
+
+      expect(response.status).toEqual(201);
     });
   });
 });
